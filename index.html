@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Advance Happy Birthday, [ AMMU BANGARM]!</title>
+
+    <!-- This script pulls in Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- These are for the animations and photo gallery -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="img/background image.png" />
+
+    <!-- Google Fonts for the Anime look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Link to your new external CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <!-- IMPORTANT: Replace with a real image link after you upload it -->
+    <meta property="og:image" content="https://placehold.co/1200x630/87CEEB/FFFFFF?text=A+Surprise+For+[Name]">
+</head>
+
+<body class="gate-active">
+    <audio id="site-music" loop preload="auto">
+        <source src="img/Chinni%20Gundelo-%5BAudioTrimmer.com%5D.mp3" type="audio/mpeg">
+    </audio>
+
+    <section id="love-gate" class="love-gate" aria-labelledby="love-gate-title">
+        <div class="love-gate-scene" aria-hidden="true">
+            <span class="scene-heart scene-heart-one">&#10084;</span>
+            <span class="scene-heart scene-heart-two">&#10084;</span>
+            <span class="scene-heart scene-heart-three">&#10084;</span>
+            <span class="scene-ring scene-ring-one"></span>
+            <span class="scene-ring scene-ring-two"></span>
+        </div>
+        <div class="love-gate-card">
+            <p class="love-gate-kicker">A little question for you</p>
+            <h1 id="love-gate-title" class="font-anime">Ammu, I Love You</h1>
+            <p id="love-gate-message">Will you come inside and see your surprise?</p>
+            <div class="love-gate-actions">
+                <button id="love-you-button" class="love-gate-button love-gate-button-primary" type="button">Love You Too 💖</button>
+                <button id="hate-you-button" class="love-gate-button love-gate-button-secondary" type="button">Hate You 😜</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="kiss-gate" class="love-gate is-hidden" aria-labelledby="kiss-gate-title">
+        <div class="love-gate-scene" aria-hidden="true">
+            <span class="scene-heart scene-heart-one">&#10084;</span>
+            <span class="scene-heart scene-heart-two">&#10084;</span>
+            <span class="scene-heart scene-heart-three">&#10084;</span>
+            <span class="scene-ring scene-ring-one"></span>
+            <span class="scene-ring scene-ring-two"></span>
+        </div>
+        <div class="love-gate-card">
+            <p class="love-gate-kicker">One more tiny question</p>
+            <h1 id="kiss-gate-title" class="font-anime">Ammu, oka kiss evvochuga?</h1>
+            <p id="kiss-gate-message">Birthday surprise ki mundu oka sweet kiss please.</p>
+            <div class="love-gate-actions">
+                <button id="kiss-button" class="love-gate-button love-gate-button-primary" type="button">Hmm Sare 💋</button>
+                <button id="kiss-maybe-button" class="love-gate-button love-gate-button-secondary" type="button">Dobbey 💖</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Canvas for the falling cherry blossoms -->
+    <canvas id="sakura-canvas"></canvas>
+
+    <!-- Section 1: Hero Welcome -->
+    <header class="h-screen relative flex items-center justify-center text-white overflow-hidden">
+
+        <button id="music-toggle" type="button" class="music-toggle" aria-pressed="false" aria-label="Play birthday music">
+            <span aria-hidden="true">&#9835;</span>
+            <span id="music-toggle-label">Play music</span>
+        </button>
+
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+        <div id="react-hero-animation" class="react-hero-animation" aria-hidden="true"></div>
+
+        <div class="text-center z-10 p-4" data-aos="fade-in" data-aos-duration="1500">
+            <h1 class="text-5xl md:text-7xl font-anime drop-shadow-lg">Advance Happy Birthday<br> [Ammu Bangaram]!</h1>
+            <p class="mt-4 text-xl font-semibold">Celebrating a wonderful journey of...</p>
+            <div id="countdown" class="mt-6 text-2xl font-semibold tracking-widest leading-relaxed"></div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-6 md:p-12">
+
+        <!-- Section 2: A Letter For You -->
+        <section class="my-16 md:my-24 max-w-3xl mx-auto text-center" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-anime text-sakura mb-8 drop-shadow-sm">A Special Message For You</h2>
+            <div class="text-left text-lg leading-relaxed space-y-4 bg-white p-8 rounded-lg shadow-lg">
+                <!-- TODO: Write your personal letter here -->
+                <p>Hey [Ammu Bangaram],</p>
+                <p>Wish you a very Happy Birthday [Ammu]! May god fulfil all your wishes, you have an endless supply of happy days and your dreams turns into reality, A life surrounded with pets and life that will become a manga </p>
+                <p>Thankyou for always being so kind and reason behind everyone smile, Always connected to your roots , A true friend to everyone, You always be yourself and that's your vibe We all are very lucky, we are not in city of gems still we found
+                    a real gem.</p>
+                <p class="text-right mt-8">
+                    Regards<br>
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 3: The Timeline -->
+        <section class="my-16 md:my-24">
+            <h2 class="text-4xl md:text-5xl font-anime text-center mb-12" data-aos="fade-up">Your Story Arc</h2>
+            <div class="space-y-16">
+                <!-- Timeline Item 1 -->
+                <div class="flex flex-col md:flex-row items-center gap-8" data-aos="fade-right">
+                    <!-- TODO: Replace with your photo -->
+                    <img src="img/img-01.jpg" alt="Add photo 1" class="w-full md:w-1/2 rounded-lg shadow-xl border-4 border-white">
+                    <!--replce img1.png with name of your img-->
+                    <div class="text-center md:text-left">
+                        <!-- TODO: Customize the date and story -->
+                        <h3 class="text-2xl font-anime text-sakura">Our first Meeting</h3>
+                        <p class="mt-2 text-lg">Naa love story degree days lo start kaaledu… school days lone start ayyindi. First time thanani Miryalagudem lo kalisa. Appatnunchi thanante naku chala istam. Kani adi complete ga one-side love. Naku thanante chala istam unna…
+                            thanu matram appudu natho pedda ga matladedi kadu. Nenu kuda thanani dooram nunchi chusthu, aa feelings ni naalone dachukunevadini. School days ala aipoyayi. Tarvatha degree ki vachaka malli maa madhya connection vachindi.
+                            Appudu memu chatting, calls cheskuntu chala close ayyamu. Time ela pass ayyedho kuda telisedi kadu. Appudu nenu naa feelings thanaki cheppesa… propose chesa. Ame kuda nannu accept chesindi. ❤️ Appati varaku one-side ga unna
+                            naa love… aa moment tho iddari love story ga maarindi.</p>
+                        <br>
+                    </div>
+                </div>
+                <!-- Timeline Item 2 -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8" data-aos="fade-left">
+                    <!-- TODO: Replace with your photo -->
+                    <img src="img/126266 (1).jpg" alt="Add photo 2" class="w-full md:w-1/2 rounded-lg shadow-xl border-4 border-white">
+                    <div class="text-center md:text-right">
+                        <!-- TODO: Customize the date and story -->
+                        <h3 class="text-2xl font-anime text-sakura">Part 2</h3>
+                        <p class="mt-2 text-lg">Thanani first lo nenu istapaddanu… Kani konni rojulu tarvatha tanu naaku oka habit aipoyindi. Roju thantho matladakunda undalekapoyevadini. Chat aina, call aina… thantho matladatam naa daily life lo oka part aipoyindi. Maa madhya
+                            pedda godavalu em undevu kadu. Kani thanaki kopam konchem ekkuva. Chinna chinna things ki arguments ayyina moments undevi. Kani entha kopam vachina, entha godava aina… tanu nannu vadilesedi kadu. Nenu kuda thanani vadulukoledu.
+                            Appude naaku ardham ayyindi… Tanu naaku just love kaadu… oka habit. Oka part of my life. ❤️</p>
+                        <br>
+                    </div>
+                </div>
+                <!-- Timeline Item 3 (NEW) -->
+                <div class="flex flex-col md:flex-row items-center gap-8" data-aos="fade-right">
+                    <img src="img/img-03.jpg" alt="Add photo 3" class="w-full md:w-1/2 rounded-lg shadow-xl border-4 border-white">
+                    <div class="text-center md:text-left">
+                        <h3 class="text-2xl font-anime text-sakura">Part3</h3>
+                        <p class="mt-2 text-lg">Situations Changed Everything ❤️‍🩹 Maa relationship happy ga continue avutunna time lo… thanaki home lo marriage ki pressure start ayyindi. Aa situation valla thanaki kuda chala tension perigindi. Oka side family pressure… inko
+                            side mana relationship. Daaniki madhyalo maa madhya kuda konni godavalu, misunderstandings vachayi. Mellaga chatting taggindi… calls taggayi… finally memu okariki okaram dooram aipoyam. Kani nijam cheppalante, memu dooram avvali
+                            ani eppudu anukoledu. Konni times love takkuva avvadam valla kaadu… situations valla people dooram avutaru. Alane maa story lo kuda jarigindi. Oka time lo roju maatladukunna memu… almost one year gap lo okariki okaram dooranga
+                            undipoyam.
+                        </p>
+                        <br>
+                    </div>
+                </div>
+                <!-- Timeline Item 4 (NEW) -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8" data-aos="fade-left">
+                    <img src="img/img-04.jpg" alt="Add photo4" class="w-full md:w-1/2 rounded-lg shadow-xl border-4 border-white">
+                    <div class="text-center md:text-right">
+                        <h3 class="text-2xl font-anime text-sakura">Part 4</h3>
+                        <p class="mt-2 text-lg">Almost one year gap tarvatha… tanu malli naatho matladatam start chesindi. Ee sari situation completely different ga undi. Paatavi tensions levu. Paatavi unnecessary godavalu levu. Just happy ga matladukuntunnam. Malli old connection
+                            vachinattu anipinchindi. Inka interesting thing enti ante… ee sari memu past gurinchi ekkuva think cheyyatly and future gurenche kuda, . Em jarugutundo manaki teliyadu. Future ela untundo kuda teliyadu. Kani oka thing matram
+                            clear… Mana happiness ni maname enduku lose cheskovali? Life lo manaki happiness iche person ni, konni problems or situations valla completely lose avvadam enduku? Anduke ee sari past lo jarigina vatini pakkana petti… present
+                            lo happy ga undali Anukuntunnam, future gurinche alochenchakunda velinanne memories create chysukovale anukuntunnam .
+                            <br> {Ammu How is it}</p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Your Favourite Photos of your loved Ones (NEW SECTION) -->
+        <section class="my-16 md:my-24">
+            <h2 class="text-4xl md:text-5xl font-anime text-center mb-12" data-aos="fade-up">Hall of Fame</h2>
+            <div class="relative">
+                <!-- Scroll Buttons -->
+                <button id="scroll-left-btn" class="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white rounded-full p-2 shadow-md transition-opacity opacity-0 md:opacity-100">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sakura" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+      </button>
+                <button id="scroll-right-btn" class="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white rounded-full p-2 shadow-md transition-opacity opacity-0 md:opacity-100">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sakura" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </button>
+
+                <!-- Scrollable Container -->
+                <div id="hall-of-fame-scroller" class="flex overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide p-4 -mx-4">
+                    <div class="hall-of-fame-track flex snap-x snap-mandatory gap-8">
+                        <!--  Card 1 -->
+                        <div class="snap-center flex-shrink-0 w-10/12 sm:w-1/2 md:w-1/3 lg:w-1/4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="hall-of-fame-card bg-white p-6 rounded-lg shadow-lg text-center h-full">
+                                <img src="img/126282 (1).jpg" alt="Photo 1" class="hall-of-fame-image w-full object-cover rounded-md mb-4">
+                                <h3 class="text-2xl font-anime text-sakura">Photo 1</h3>
+                                <p class="mt-2">"Bangaram"</p>
+                            </div>
+                        </div>
+                        <!--  Card 2 -->
+                        <div class="snap-center flex-shrink-0 w-10/12 sm:w-1/2 md:w-1/3 lg:w-1/4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="hall-of-fame-card bg-white p-6 rounded-lg shadow-lg text-center h-full">
+                                <img src="img/126284 (1).jpg" alt="Photo 2" class="hall-of-fame-image w-full object-cover rounded-md mb-4">
+                                <h3 class="text-2xl font-anime text-sakura">Photo 2</h3>
+                                <p class="mt-2">"Sweet Heart"</p>
+                            </div>
+                        </div>
+                        <!--  Card 3 -->
+                        <div class="snap-center flex-shrink-0 w-10/12 sm:w-1/2 md:w-1/3 lg:w-1/4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="hall-of-fame-card bg-white p-6 rounded-lg shadow-lg text-center h-full">
+                                <img src="img/fame img -1.jpg" alt="Photo 3" class="hall-of-fame-image w-full object-cover rounded-md mb-4">
+                                <h3 class="text-2xl font-anime text-sakura">Photo 3</h3>
+                                <p class="mt-2">"Ammu"</p>
+                            </div>
+                        </div>
+                        <!--  Card 4 -->
+                        <div class="snap-center flex-shrink-0 w-10/12 sm:w-1/2 md:w-1/3 lg:w-1/4" data-aos="fade-up" data-aos-delay="400">
+                            <div class="hall-of-fame-card bg-white p-6 rounded-lg shadow-lg text-center h-full">
+                                <img src="img/126275 (1).jpg" alt="Photo 4" class="hall-of-fame-image w-full object-cover rounded-md mb-4">
+                                <h3 class="text-2xl font-anime text-sakura">Photo 4</h3>
+                                <p class="mt-2">"Bujji"</p>
+                            </div>
+                        </div>
+                        <!--  Card 5 -->
+                        <div class="snap-center flex-shrink-0 w-10/12 sm:w-1/2 md:w-1/3 lg:w-1/4" data-aos="fade-up" data-aos-delay="500">
+                            <div class="hall-of-fame-card bg-white p-6 rounded-lg shadow-lg text-center h-full">
+                                <img src="img/126266 (1).jpg" alt="Photo 5" class="hall-of-fame-image w-full object-cover rounded-md mb-4">
+                                <h3 class="text-2xl font-anime text-sakura">Photo 5</h3>
+                                <p class="mt-2">"Baby"</p>
+                            </div>
+                        </div>
+                        <!-- Card 6 -->
+                        <div class="snap-center flex-shrink-0 w-10/12 sm:w-1/2 md:w-1/3 lg:w-1/4" data-aos="fade-up" data-aos-delay="600">
+                            <div class="hall-of-fame-card bg-white p-6 rounded-lg shadow-lg text-center h-full">
+                                <img src="img/126251.jpg" alt="Photo 6" class="hall-of-fame-image w-full object-cover rounded-md mb-4">
+                                <h3 class="text-2xl font-anime text-sakura">Photo 6</h3>
+                                <p class="mt-2">"Darling"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: The Gallery -->
+        <section class="my-16 md:my-24">
+            <h2 class="text-4xl md:text-5xl font-anime text-center mb-12" data-aos="fade-up">The Y.V.A. Collection</h2>
+            <p class="text-center text-lg -mt-8 mb-12">(Your Very-own Adventures)</p>
+            <div id="lightgallery" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="img/126216.jpg" data-aos="zoom-in" class="block w-full h-48 md:h-64">
+                    <img src="img/126216.jpg" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 w-full h-full object-cover border-4 border-white" alt="Memory 1">
+                </a>
+                <a href="img/126239 (1).jpg" data-aos="zoom-in" data-aos-delay="100" class="block w-full h-48 md:h-64">
+                    <img src="img/126239 (1).jpg" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 w-full h-full object-cover border-4 border-white" alt="Memory 2">
+                </a>
+                <a href="img/126248 (1).jpg" data-aos="zoom-in" data-aos-delay="200" class="block w-full h-48 md:h-64">
+                    <img src="img/126248 (1).jpg" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 w-full h-full object-cover border-4 border-white" alt="Memory 3">
+                </a>
+                <a href="img/fame img -1.jpg" data-aos="zoom-in" data-aos-delay="300" class="block w-full h-48 md:h-64">
+                    <img src="img/fame img -1.jpg" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 w-full h-full object-cover border-4 border-white" alt="Memory 4">
+                </a>
+                <!-- Second Row of Photos -->
+                <a href="img/img-01.jpg" data-aos="zoom-in" data-aos-delay="400" class="block w-full h-48 md:h-64">
+                    <img src="img/img-01.jpg" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 w-full h-full object-cover border-4 border-white" alt="Memory 5">
+                </a>
+                <a href="img/img-06.jpg" data-aos="zoom-in" data-aos-delay="500" class="block w-full h-48 md:h-64">
+                    <img src="img/img-06.jpg" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 w-full h-full object-cover border-4 border-white" alt="Memory 6">
+                </a>
+                <a href="img/img-04.jpg" data-aos="zoom-in" data-aos-delay="600" class="block w-full h-48 md:h-64">
+                    <img src="img/img-04.jpg" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 w-full h-full object-cover border-4 border-white" alt="Memory 7">
+                </a>
+                <a href="img/126220 (1).jpg" data-aos="zoom-in" data-aos-delay="700" class="block w-full h-48 md:h-64">
+                    <img src="img/126220 (1).jpg" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 w-full h-full object-cover border-4 border-white" alt="Memory 8">
+                </a>
+                <!-- Third Row of Photos -->
+                <a href="img/126283 (1).jpg" data-aos="zoom-in" data-aos-delay="800" class="block w-full h-48 md:h-64">
+                    <img src="img/126283 (1).jpg" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 w-full h-full object-cover border-4 border-white" alt="Memory 9">
+                </a>
+                <a href="img/126235.jpg" data-aos="zoom-in" data-aos-delay="900" class="block w-full h-48 md:h-64">
+                    <img src="img/126235.jpg" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 w-full h-full object-cover border-4 border-white" alt="Memory 10">
+                </a>
+                <a href="img/126266.jpg" data-aos="zoom-in" data-aos-delay="1000" class="block w-full h-48 md:h-64">
+                    <img src="img/126266.jpg" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 w-full h-full object-cover border-4 border-white" alt="Memory 11">
+                </a>
+                <a href="img/126251.jpg" data-aos="zoom-in" data-aos-delay="1100" class="block w-full h-48 md:h-64">
+                    <img src="img/126251.jpg" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 w-full h-full object-cover border-4 border-white" alt="Memory 12">
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 6: Finale -->
+        <section class="my-16 md:my-24" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-anime text-center mb-4">Advance Happy Birthday [Na Bujji Bangaram]</h2>
+            <div class="max-w-4xl mx-auto rounded-lg shadow-2xl overflow-hidden bg-navy">
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-white p-8 text-center">
+        <p>Enjoy your day to the fullest.</p>
+        <p class="text-sm opacity-70 mt-2">Hope you liked it...</p>
+    </footer>
+
+    <!-- These scripts are for the animations and photo gallery -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/lightgallery.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script>
+        (() => {
+            const {
+                useEffect,
+                useState
+            } = React;
+            const particles = Array.from({
+                length: 18
+            }, (_, index) => ({
+                id: index,
+                left: `${(index * 19 + 7) % 100}%`,
+                delay: `${(index % 6) * -0.8}s`,
+                duration: `${5 + (index % 5)}s`,
+                size: `${0.35 + (index % 4) * 0.18}rem`
+            }));
+
+            function ReactHeroAnimation() {
+                const [tilt, setTilt] = useState({
+                    x: 0,
+                    y: 0
+                });
+
+                useEffect(() => {
+                    const handlePointerMove = (event) => {
+                        setTilt({
+                            x: (event.clientY / window.innerHeight - 0.5) * -10,
+                            y: (event.clientX / window.innerWidth - 0.5) * 10
+                        });
+                    };
+
+                    window.addEventListener('pointermove', handlePointerMove);
+                    return () => window.removeEventListener('pointermove', handlePointerMove);
+                }, []);
+
+                return React.createElement(
+                    'div', {
+                        className: 'react-hero-orbit',
+                        style: {
+                            transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`
+                        }
+                    },
+                    React.createElement('div', {
+                        className: 'react-hero-glow'
+                    }),
+                    React.createElement('div', {
+                        className: 'react-hero-heart'
+                    }, '♥'),
+                    particles.map((particle) => React.createElement('span', {
+                        className: 'react-hero-particle',
+                        key: particle.id,
+                        style: {
+                            left: particle.left,
+                            animationDelay: particle.delay,
+                            animationDuration: particle.duration,
+                            width: particle.size,
+                            height: particle.size
+                        }
+                    }))
+                );
+            }
+
+            const rootElement = document.getElementById('react-hero-animation');
+            if (rootElement) ReactDOM.createRoot(rootElement).render(React.createElement(ReactHeroAnimation));
+        })();
+    </script>
+
+    <!-- Link to your new external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+
+</html>

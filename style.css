@@ -1,0 +1,557 @@
+/* Custom styles for our Anime Theme */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F0F8FF;
+    /* Alice Blue - a very light sky blue */
+    color: #2c3e50;
+    /* Dark Navy/Slate */
+}
+
+body.gate-active {
+    overflow: hidden;
+}
+
+.love-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+    perspective: 1200px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffe6ee 0%, #dff5ff 100%);
+    transition: opacity 500ms ease, visibility 500ms ease;
+}
+
+.love-gate.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#kiss-gate .love-gate-button-primary {
+    background: #ff6f91;
+}
+
+#kiss-gate .love-gate-button-secondary {
+    background: #ff6f91;
+}
+
+.love-gate-card {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 32rem);
+    padding: clamp(2rem, 8vw, 4rem) clamp(1.25rem, 6vw, 3rem);
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    border-radius: 1.5rem;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 1.5rem 4rem rgba(44, 62, 80, 0.18);
+    text-align: center;
+    transform: rotateX(var(--gate-tilt-x, 0deg)) rotateY(var(--gate-tilt-y, 0deg));
+    transform-style: preserve-3d;
+    transition: transform 180ms ease-out;
+    will-change: transform;
+}
+
+.love-gate-scene {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    transform-style: preserve-3d;
+}
+
+.scene-heart,
+.scene-ring {
+    position: absolute;
+    display: block;
+    transform-style: preserve-3d;
+}
+
+.scene-heart {
+    color: #ff8fab;
+    font-size: clamp(2rem, 6vw, 4rem);
+    filter: drop-shadow(0 0.8rem 0.5rem rgba(198, 88, 119, 0.2));
+    animation: heart-float 5s ease-in-out infinite;
+}
+
+.scene-heart-one {
+    top: 15%;
+    left: 14%;
+    animation-delay: -1s;
+}
+
+.scene-heart-two {
+    right: 15%;
+    bottom: 18%;
+    color: #c77dff;
+    animation-delay: -3s;
+}
+
+.scene-heart-three {
+    right: 22%;
+    top: 17%;
+    color: #ffb703;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    animation-delay: -4s;
+}
+
+.scene-ring {
+    width: clamp(8rem, 22vw, 15rem);
+    aspect-ratio: 1;
+    border: 2px solid rgba(255, 143, 171, 0.45);
+    border-radius: 50%;
+    animation: ring-spin 12s linear infinite;
+}
+
+.scene-ring-one {
+    top: 7%;
+    right: 8%;
+    transform: rotateX(65deg) rotateZ(20deg);
+}
+
+.scene-ring-two {
+    bottom: 5%;
+    left: 7%;
+    border-color: rgba(114, 221, 247, 0.5);
+    transform: rotateY(65deg) rotateZ(-20deg);
+    animation-direction: reverse;
+}
+
+@keyframes heart-float {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0) rotateZ(-8deg) rotateY(0deg);
+    }
+    50% {
+        transform: translate3d(0, -1.5rem, 3rem) rotateZ(8deg) rotateY(180deg);
+    }
+}
+
+@keyframes ring-spin {
+    from {
+        rotate: 0deg;
+    }
+    to {
+        rotate: 360deg;
+    }
+}
+
+.love-gate-kicker {
+    margin-bottom: 1rem;
+    color: #e68ba0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.love-gate h1 {
+    color: #2c3e50;
+    font-size: clamp(1.8rem, 7vw, 3rem);
+    line-height: 1.3;
+}
+
+.love-gate-card>p:not(.love-gate-kicker) {
+    margin-top: 1.25rem;
+    font-size: 1rem;
+}
+
+.love-gate-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.love-gate-button {
+    min-width: 8rem;
+    padding: 0.8rem 1.25rem;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    font: 600 1rem 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: transform 180ms ease, left 180ms ease, top 180ms ease, box-shadow 180ms ease;
+}
+
+.love-gate-button:hover,
+.love-gate-button:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(44, 62, 80, 0.16);
+}
+
+.love-gate-button-primary {
+    background: #ff8fab;
+    color: #fff;
+}
+
+.love-gate-button-secondary {
+    background: #ff8fab;
+    color: #fff;
+}
+
+#hate-you-button {
+    will-change: transform, left, top;
+    width: auto;
+}
+
+.font-anime {
+    font-family: 'Mochiy Pop One', sans-serif;
+}
+
+.text-sakura {
+    color: #FFB7C5;
+    /* Cherry Blossom Pink */
+}
+
+.bg-navy {
+    background-color: #2c3e50;
+}
+
+.music-toggle {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 20;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 999px;
+    background: rgba(44, 62, 80, 0.8);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 180ms ease, transform 180ms ease;
+}
+
+.music-toggle:hover,
+.music-toggle:focus-visible {
+    background: #2c3e50;
+    transform: translateY(-2px);
+}
+
+.music-toggle span:first-child {
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+
+/* Style for the falling petals canvas */
+
+#sakura-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+    /* Allows clicks to go through the canvas */
+}
+
+.react-hero-animation {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    perspective: 900px;
+    pointer-events: none;
+}
+
+.react-hero-orbit {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transition: transform 300ms ease-out;
+}
+
+.react-hero-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(42vw, 30rem);
+    aspect-ratio: 1;
+    border: 1px solid rgba(255, 183, 197, 0.45);
+    border-radius: 50%;
+    box-shadow: 0 0 5rem rgba(255, 143, 171, 0.24), inset 0 0 3rem rgba(114, 221, 247, 0.12);
+    transform: translate(-50%, -50%) rotateX(68deg);
+}
+
+.react-hero-heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #ff8fab;
+    font-size: clamp(4rem, 12vw, 8rem);
+    line-height: 1;
+    text-shadow: 0 1rem 2rem rgba(255, 111, 145, 0.35), 0 0 2rem rgba(255, 255, 255, 0.8);
+    transform: translate(-50%, -50%) translateZ(4rem);
+    animation: react-heart-pulse 2.4s ease-in-out infinite;
+}
+
+.react-hero-particle {
+    position: absolute;
+    bottom: -1rem;
+    display: block;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.8);
+    animation: react-particle-rise 7s linear infinite;
+}
+
+@keyframes react-heart-pulse {
+    0%,
+    100% {
+        transform: translate(-50%, -50%) translateZ(4rem) scale(0.94);
+    }
+    50% {
+        transform: translate(-50%, -50%) translateZ(4rem) scale(1.08);
+    }
+}
+
+@keyframes react-particle-rise {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 0, 0) scale(0.3);
+    }
+    15% {
+        opacity: 0.9;
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(3rem, -110vh, 5rem) scale(1);
+    }
+}
+
+
+/* For hiding the scrollbar */
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+@media (max-width: 639px) {
+    .music-toggle {
+        top: 0.75rem;
+        right: 0.75rem;
+        max-width: calc(100vw - 1.5rem);
+        padding: 0.55rem 0.75rem;
+        font-size: 0.85rem;
+    }
+    header .text-5xl {
+        font-size: clamp(2rem, 10vw, 3rem);
+        line-height: 1.25;
+    }
+    header .text-xl {
+        font-size: 1rem;
+    }
+    main.container {
+        padding-inline: 1rem;
+    }
+    main .text-4xl {
+        font-size: clamp(1.65rem, 7vw, 2.25rem);
+        line-height: 1.3;
+    }
+    main .text-lg {
+        font-size: 1rem;
+    }
+    main .bg-white.p-8 {
+        padding: 1.25rem;
+    }
+    main img {
+        max-width: 100%;
+    }
+}
+
+#hall-of-fame-scroller {
+    scroll-padding-inline: 1rem;
+    overscroll-behavior-x: contain;
+}
+
+.hall-of-fame-track {
+    min-width: max-content;
+}
+
+.hall-of-fame-track>div {
+    width: clamp(18rem, 28vw, 24rem);
+}
+
+.hall-of-fame-card {
+    min-height: 34rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.hall-of-fame-image {
+    aspect-ratio: 9 / 16;
+    height: auto;
+    flex: 0 0 auto;
+}
+
+#lightgallery {
+    gap: 1.25rem;
+}
+
+#lightgallery>a {
+    aspect-ratio: 4 / 5;
+    height: auto !important;
+    min-height: 14rem;
+}
+
+.snowflake-burst {
+    position: fixed;
+    z-index: 40;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0.35rem rgba(255, 255, 255, 0.9);
+    pointer-events: none;
+    animation: snow-burst 900ms ease-out forwards;
+}
+
+.flower-burst {
+    position: fixed;
+    z-index: 140;
+    pointer-events: none;
+    color: var(--flower-color);
+    font-size: var(--flower-size);
+    line-height: 1;
+    text-shadow: 0 0 0.4rem rgba(255, 255, 255, 0.8);
+    animation: flower-fall 2.4s ease-out forwards;
+}
+
+@keyframes flower-fall {
+    0% {
+        opacity: 0;
+        transform: translateY(-2rem) rotate(0deg) scale(0.5);
+    }
+    15% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--flower-drift), 110vh) rotate(var(--flower-rotation)) scale(1);
+    }
+}
+
+@keyframes snow-burst {
+    0% {
+        opacity: 0.95;
+        transform: translate(-50%, -50%) scale(0.4);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--snow-x)), calc(-50% + var(--snow-y))) scale(1);
+    }
+}
+
+@media (max-width: 639px) {
+    .love-gate {
+        padding: 1rem;
+    }
+    .love-gate-card {
+        padding: 2rem 1rem;
+    }
+    .love-gate-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .love-gate-button {
+        width: 100%;
+    }
+    #hall-of-fame-scroller {
+        margin-inline: -0.5rem;
+        padding-inline: 0.5rem;
+    }
+    .hall-of-fame-track {
+        gap: 1rem;
+    }
+    .hall-of-fame-track>div {
+        width: min(calc(100vw - 3rem), 23rem);
+    }
+    .hall-of-fame-card {
+        min-height: 33rem;
+        padding: 1rem;
+    }
+    .hall-of-fame-image {
+        aspect-ratio: 9 / 16;
+    }
+    #lightgallery {
+        gap: 0.75rem;
+    }
+    #lightgallery>a {
+        aspect-ratio: 3 / 4;
+        min-height: 12rem;
+    }
+}
+
+
+/* Custom styles for our Anime Theme */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F0F8FF;
+    /* Alice Blue - a very light sky blue */
+    color: #2c3e50;
+    /* Dark Navy/Slate */
+}
+
+.font-anime {
+    font-family: 'Mochiy Pop One', sans-serif;
+}
+
+.text-sakura {
+    color: #FFB7C5;
+    /* Cherry Blossom Pink */
+}
+
+.bg-navy {
+    background-color: #2c3e50;
+}
+
+
+/* Style for the falling petals canvas */
+
+#sakura-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+    /* Allows clicks to go through the canvas */
+}
+
+
+/* For hiding the scrollbar */
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
