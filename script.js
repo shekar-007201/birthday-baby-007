@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function createFlowerBurst() {
         const flowerColors = ['#ff6f91', '#ff9f1c', '#ffd166', '#72ddf7', '#c77dff', '#80ed99'];
 
-        for (let index = 0; index < 80; index++) {
+        for (let index = 0; index < 36; index++) {
             const flower = document.createElement('span');
             flower.className = 'flower-burst';
             flower.textContent = '✿';
@@ -365,34 +365,47 @@ document.addEventListener('DOMContentLoaded', function() {
     const canvas = document.getElementById('sakura-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
         let petals = [];
-        const numPetals = 50;
+        let canvasWidth = 0;
+        let canvasHeight = 0;
+        let frameId = 0;
+        let lastFrameTime = 0;
+        const frameInterval = 1000 / 30;
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+            canvasWidth = window.innerWidth;
+            canvasHeight = window.innerHeight;
+            canvas.width = Math.round(canvasWidth * pixelRatio);
+            canvas.height = Math.round(canvasHeight * pixelRatio);
+            canvas.style.width = `${canvasWidth}px`;
+            canvas.style.height = `${canvasHeight}px`;
+            ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+            createPetals();
+            if (reducedMotion) drawPetals();
         }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
 
         function Petal() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height * 2 - canvas.height;
-            this.w = 25 + Math.random() * 15;
-            this.h = 20 + Math.random() * 10;
+            this.x = Math.random() * canvasWidth;
+            this.y = Math.random() * canvasHeight * 2 - canvasHeight;
+            this.w = 16 + Math.random() * 12;
+            this.h = 13 + Math.random() * 9;
             this.opacity = this.w / 40;
             this.flip = Math.random();
-            this.xSpeed = 1.5 + Math.random() * 2;
-            this.ySpeed = 1 + Math.random() * 1;
+            this.xSpeed = 0.8 + Math.random() * 1.2;
+            this.ySpeed = 0.6 + Math.random() * 0.8;
             this.flipSpeed = Math.random() * 0.03;
         }
 
         Petal.prototype.draw = function() {
-            if (this.y > canvas.height || this.x > canvas.width) {
+            if (this.y > canvasHeight || this.x > canvasWidth) {
                 this.x = -this.w;
-                this.y = Math.random() * canvas.height * 2 - canvas.height;
-                this.xSpeed = 1.5 + Math.random() * 2;
-                this.ySpeed = 1 + Math.random() * 1;
+                this.y = Math.random() * canvasHeight * 2 - canvasHeight;
+                this.xSpeed = 0.8 + Math.random() * 1.2;
+                this.ySpeed = 0.6 + Math.random() * 0.8;
                 this.flip = Math.random();
             }
             ctx.globalAlpha = this.opacity;
@@ -414,20 +427,53 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function createPetals() {
             petals = [];
-            for (let i = 0; i < numPetals; i++) {
+            const isSmallScreen = window.innerWidth < 768;
+            const petalCount = isSmallScreen
+                ? Math.min(14, Math.max(8, Math.round(canvasWidth / 30)))
+                : Math.min(28, Math.max(16, Math.round(canvasWidth / 48)));
+            for (let i = 0; i < petalCount; i++) {
                 petals.push(new Petal());
             }
         }
 
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        function drawPetals() {
+            ctx.clearRect(0, 0, canvasWidth, canvasHeight);
             petals.forEach(petal => {
                 petal.update();
             });
-            requestAnimationFrame(animate);
         }
 
-        createPetals();
-        animate();
+        function animate(timestamp) {
+            frameId = 0;
+            if (document.hidden || document.body.classList.contains('gate-active')) return;
+            if (timestamp - lastFrameTime < frameInterval) {
+                frameId = requestAnimationFrame(animate);
+                return;
+            }
+
+            lastFrameTime = timestamp;
+            drawPetals();
+            if (!reducedMotion) frameId = requestAnimationFrame(animate);
+        }
+
+        function syncAnimation() {
+            if (document.hidden || document.body.classList.contains('gate-active') || reducedMotion) {
+                if (frameId) cancelAnimationFrame(frameId);
+                frameId = 0;
+                return;
+            }
+
+            lastFrameTime = 0;
+            if (!frameId) frameId = requestAnimationFrame(animate);
+        }
+
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas, { passive: true });
+        document.addEventListener('visibilitychange', syncAnimation);
+        new MutationObserver(syncAnimation).observe(document.body, {
+            attributes: true,
+            attributeFilter: ['class']
+        });
+        syncAnimation();
     }
 });

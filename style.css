@@ -782,7 +782,6 @@ header .text-xl {
     border-color: rgba(255, 255, 255, 0.65);
     background: rgba(76, 29, 149, 0.55);
     box-shadow: 0 0.5rem 1.5rem rgba(40, 16, 68, 0.2);
-    backdrop-filter: blur(12px);
 }
 
 .music-toggle:hover,
@@ -801,7 +800,6 @@ main>section {
     border-radius: 1.75rem;
     background: rgba(255, 255, 255, 0.72);
     box-shadow: 0 1rem 3rem rgba(96, 42, 91, 0.08);
-    backdrop-filter: blur(10px);
 }
 
 main>section>h2 {
@@ -813,8 +811,6 @@ main>section>h2 {
 body {
     position: relative;
     isolation: isolate;
-    background-size: 180% 180%;
-    animation: pastel-sky-drift 32s ease-in-out infinite alternate;
 }
 
 body::before,
@@ -832,8 +828,6 @@ body::before {
         radial-gradient(ellipse at 15% 28%, rgba(255, 166, 201, 0.2), transparent 28rem),
         radial-gradient(ellipse at 83% 18%, rgba(196, 181, 253, 0.2), transparent 30rem),
         radial-gradient(ellipse at 62% 86%, rgba(253, 230, 138, 0.16), transparent 26rem);
-    background-size: 150% 150%;
-    animation: pastel-cloud-drift 42s ease-in-out infinite alternate;
 }
 
 body::after {
@@ -844,63 +838,6 @@ body::after {
         radial-gradient(circle, rgba(251, 191, 36, 0.7) 0 1.2px, transparent 2px);
     background-position: 0 0, 40px 65px, 110px 25px;
     background-size: 150px 150px, 190px 190px, 240px 240px;
-    animation: starlight-drift 70s linear infinite;
-}
-
-header {
-    background-size: 180% 180%;
-    animation: birthday-gradient-glow 18s ease-in-out infinite alternate;
-}
-
-.love-gate {
-    background-size: 180% 180%;
-    animation: birthday-gradient-glow 24s ease-in-out infinite alternate;
-}
-
-@keyframes pastel-sky-drift {
-    0% {
-        background-position: 0% 40%;
-    }
-    100% {
-        background-position: 100% 60%;
-    }
-}
-
-@keyframes pastel-cloud-drift {
-    0% {
-        transform: translate3d(-1.5%, -1%, 0) scale(1);
-    }
-    100% {
-        transform: translate3d(1.5%, 1%, 0) scale(1.04);
-    }
-}
-
-@keyframes starlight-drift {
-    from {
-        background-position: 0 0, 40px 65px, 110px 25px;
-    }
-    to {
-        background-position: 150px 210px, -150px 255px, 350px -215px;
-    }
-}
-
-@keyframes birthday-gradient-glow {
-    0% {
-        background-position: 0% 40%;
-    }
-    100% {
-        background-position: 100% 60%;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    body,
-    body::before,
-    body::after,
-    header,
-    .love-gate {
-        animation: none;
-    }
 }
 
 @media (max-width: 767px) {

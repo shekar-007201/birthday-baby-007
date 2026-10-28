@@ -304,12 +304,9 @@
 
     <script>
         (() => {
-            const {
-                useEffect,
-                useState
-            } = React;
+            const { useEffect, useRef } = React;
             const particles = Array.from({
-                length: 18
+                length: 10
             }, (_, index) => ({
                 id: index,
                 left: `${(index * 19 + 7) % 100}%`,
@@ -319,29 +316,41 @@
             }));
 
             function ReactHeroAnimation() {
-                const [tilt, setTilt] = useState({
-                    x: 0,
-                    y: 0
-                });
+                const orbitRef = useRef(null);
 
                 useEffect(() => {
+                    if (window.matchMedia('(pointer: coarse)').matches ||
+                        window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                        return;
+                    }
+
+                    let frameId = 0;
+                    let pointerX = 0;
+                    let pointerY = 0;
                     const handlePointerMove = (event) => {
-                        setTilt({
-                            x: (event.clientY / window.innerHeight - 0.5) * -10,
-                            y: (event.clientX / window.innerWidth - 0.5) * 10
+                        pointerX = (event.clientX / window.innerWidth - 0.5) * 10;
+                        pointerY = (event.clientY / window.innerHeight - 0.5) * -10;
+                        if (frameId) return;
+
+                        frameId = window.requestAnimationFrame(() => {
+                            if (orbitRef.current) {
+                                orbitRef.current.style.transform = `rotateX(${pointerY}deg) rotateY(${pointerX}deg)`;
+                            }
+                            frameId = 0;
                         });
                     };
 
                     window.addEventListener('pointermove', handlePointerMove);
-                    return () => window.removeEventListener('pointermove', handlePointerMove);
+                    return () => {
+                        window.removeEventListener('pointermove', handlePointerMove);
+                        if (frameId) window.cancelAnimationFrame(frameId);
+                    };
                 }, []);
 
                 return React.createElement(
                     'div', {
                         className: 'react-hero-orbit',
-                        style: {
-                            transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`
-                        }
+                        ref: orbitRef
                     },
                     React.createElement('div', {
                         className: 'react-hero-glow'
